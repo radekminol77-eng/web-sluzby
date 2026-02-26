@@ -1,0 +1,965 @@
+/* ================== Body ================== */
+body {
+  margin: 0;
+  font-family: 'Roboto Flex', sans-serif;
+  background: #111;
+  height: 2000px; /* pro scroll efekt */
+}
+
+/* ================== Navbar ================== */
+.navbar {
+  position: fixed;
+  top: 40px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2000;
+  padding: 0 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  overflow: hidden;
+  width: 55px;
+  height: 20px;
+  position: relative;
+  transition: width 0.6s ease, padding 0.6s ease;
+}
+
+.menu-text {
+  color: white;
+  font-size: 14.5px;
+  font-weight: 600;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 28px;
+  height: 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.burger div {
+  width: 14px;
+  height: 2px;
+  background: white;
+  border-radius: 1px;
+}
+
+.menu-wrapper.shrink {
+  width: 20px;
+  height: 18px;
+}
+
+.menu-wrapper.shrink .menu-text {
+  opacity: 0;
+}
+
+.menu-wrapper.shrink .burger {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ================== Overlay fullscreen ================== */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* lepší než 100% */
+  background: #000; /* čistě černá */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 3000;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-overlay a {
+  color: white;
+  font-size: 28px;
+  text-decoration: none;
+  margin: 15px 0;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.menu-overlay.active a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+  z-index: 4000;
+}
+
+/* ================== Hero Section ================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  width: 100vw;
+  padding: 0 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+  background-image: url('https://images.unsplash.com/photo-1663970206579-c157cba7edda?q=80&w=1228&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;  /* nad overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Hero content – text a tlačítka */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Nadpis a podnadpis */
+.hero-content h1 {
+  font-size: 5rem;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  color: #fff;
+}
+
+.hero-content p {
+  font-size: 1.6rem;
+  color: #dddddd80;
+  margin-bottom: 30px;
+}
+
+/* Tlačítka – kontejner */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* --- BTN SERVICES (jednoduchý hover) --- */
+.hero-buttons .btn-services {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;          /* černé pozadí */
+  color: #000000;               /* bílý text */
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  cursor: pointer;
+  text-decoration: none;     /* odstraní podtržení, pokud je <a> */
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hero-buttons .btn-services:hover {
+  background: rgba(128, 128, 128, 0.3);           /* mírně světlejší černá při hover */
+  color: #fff;                /* text zůstává bílý */
+}
+
+/* --- BTN CONTACT (footer-style animace) --- */
+.hero-buttons .btn-contact {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: rgba(128, 128, 128, 0.3);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hero-buttons .btn-contact::before {
+   content: '';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: -1;
+  transition: right 0.4s ease;
+}
+
+.hero-buttons .btn-contact:hover::before {
+  right: 0;
+}
+
+.hero-buttons .btn-contact:hover {
+  color: #000000;
+}
+
+.hero-buttons .btn-services,
+.hero-buttons .btn-contact {
+  text-decoration: none;    /* odstraní podtržení u <a> */
+  font-family: inherit;     /* sjednotí font s rodičem */
+  font-size: 16px;          /* stejné písmo pro obě */
+  font-weight: 500;         /* tučnost */
+  line-height: 1;           /* stejné vertikální zarovnání */
+  display: inline-block;    /* stejné chování pro oba */
+  text-align: center;       /* střed textu */
+  box-sizing: border-box;   /* padding se počítá do velikosti */
+}
+
+@media (max-width: 768px) {
+  /* Nadpis a podnadpis */
+  .hero-content h1 {
+    font-size: 2rem;        /* přiměřená velikost na mobilu */
+    line-height: 1.2;       /* lepší čitelnost */
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  /* Hero tlačítka pod sebou */
+  .hero-buttons {
+    flex-direction: column; /* pod sebou */
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .hero-buttons .btn-services,
+  .hero-buttons .btn-contact {
+    width: 90%;             /* zabere skoro celou šířku */
+    font-size: 14px;
+    padding: 12px 0;
+  }
+
+  /* Obrázek pozadí správně zarovnaný */
+  .hero {
+    background-position: center top; /* zarovná hlavní obsah obrázku nahoře uprostřed */
+    background-size: cover;
+  }
+
+  /* Pokud máš dark overlay */
+  .dark-overlay {
+    background: rgba(0,0,0,0.4); /* stále tmavý filtr přes obrázek */
+  }
+}
+
+/* Swipe animace pro sekci pricing */
+#pricing {
+  opacity: 1;                /* hned viditelné */
+  transform: translateY(0);  /* žádný posun na startu */
+  transition: all 0.6s ease;
+}
+
+#pricing.swipe {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================== Intro Overlay ================== */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+  overflow: hidden;
+}
+
+.slide-text {
+  font-size: 3rem;
+  color: white;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0.9rem;
+}
+
+.slide-text span {
+  display: inline-block;
+  transform: translateX(100%);
+  opacity: 0;
+  animation: slideIn 0.8s forwards;
+}
+
+.slide-text span:nth-child(1) { animation-delay: 0s; }
+.slide-text span:nth-child(2) { animation-delay: 0.1s; }
+.slide-text span:nth-child(3) { animation-delay: 0.2s; }
+.slide-text span:nth-child(4) { animation-delay: 0.3s; }
+.slide-text span:nth-child(5) { animation-delay: 0.4s; }
+.slide-text span:nth-child(6) { animation-delay: 0.5s; }
+.slide-text span:nth-child(7) { animation-delay: 0.6s; }
+.slide-text span:nth-child(8) { animation-delay: 0.7s; }
+.slide-text span:nth-child(9) { animation-delay: 0.8s; }
+
+@keyframes slideIn {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0%); opacity: 1; }
+}
+
+/* ================== About ================== */
+.about {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 50px 20px;
+}
+
+.about-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(6px);
+  padding: 70px 60px;
+  border-radius: 25px;
+  max-width: 1200px;
+  min-width: 80%;
+  width: auto;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.about-left { flex: 1; min-width: 280px; }
+.about-left p { color: #ddd; line-height: 1.6; margin-bottom: 20px; font-size: 1rem; }
+
+.typewriter {
+  display: inline-block;
+  white-space: pre-wrap;
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.typewriter span.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: #fff;
+  margin-left: 1px;
+  vertical-align: middle;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.about-right {
+  flex: 1;
+  display: flex;
+  justify-content: right;
+  min-width: 280px;
+}
+
+.about-right img {
+  max-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: 0.1rem;
+}
+
+.about-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideFade 0.6s forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideFade { 0% { opacity: 0; transform: translateX(50px); } 100% { opacity: 1; transform: translateX(0); } }
+
+@media (max-width: 768px) {
+  .about-box {
+    padding: 40px 20px;
+  }
+}
+
+/* ================== Pricing Section ================== */
+.pricing {
+  background: rgba(255,255,255,0.05);
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.pricing h2 {
+  color: #ffffff;
+  font-size: 3.2rem;
+  margin-bottom: 60px;
+}
+
+.pricing-subtitle {
+  color: #dddddd80;
+  font-size: 1.1rem;
+  margin-top: -40px;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+
+.pricing-cards {
+  display: flex;
+  gap: 30px; 
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center; /* důležité */
+}
+.pricing-card:nth-child(2) {
+  height: auto;   
+  min-height: 450px;
+}
+.pricing-card {
+  height: auto;
+  background: #111111b7;
+  border-radius: 20px;
+  flex: 1 1 300px; 
+  max-width: 300px;
+  min-height: 400px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* tlačítko dole */
+  align-items: center;
+  border: 1.5px solid #222;
+  transition: none; /* odstraněná hover animace */
+}
+
+.pricing-card h3 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.pricing-card .price {
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* ================== Package Features s fajfkami ================== */
+.package-features {
+  list-style: none;        /* odstranění puntíků */
+  padding: 0;
+  text-align: left;
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: auto;     /* tlačítko dole */
+}
+
+.package-features li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.package-features li::before {
+  content: '✔';            /* fajfka před každým bodem */
+  color: #4caf50;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* ================== Tlačítko – jen zvýraznění pozadí ================== */
+.pricing-card .btn-contact {
+  margin-top: auto;
+  padding: 12px 25px;
+  background: rgba(255, 255, 255, 0.05); /* lehce průhledné pozadí */
+  color: #fff;
+  border: 0.1px solid #ffffff3b; /* tenký bílý border */
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease; /* jen pozadí se animuje */
+}
+
+.pricing-card .btn-contact:hover {
+  background: rgba(255, 255, 255, 0.2); /* světlejší vnitřek */
+  color: #fff; /* text zůstane bílý */
+}
+
+/* ================== Responsive ================== */
+@media (max-width: 768px) {
+  .pricing h2 {
+    font-size: 2rem;
+  }
+  .pricing-subtitle {
+    font-size: 0.9rem;
+  }
+  .pricing-card {
+    min-height: auto;
+    padding: 20px 15px;
+  }
+}
+
+/* ================== Portfolio ================== */
+.portfolio {
+  padding: 140px 20px; /* větší odsazení nahoře i dole */
+  text-align: center;
+}
+
+.portfolio h2 {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.portfolio-subtitle {
+  color: #ccc;
+  font-size: 1.3rem;
+  margin-bottom: 80px; /* větší mezera pod nadpisem */
+  font-weight: 400;
+}
+
+/* Grid */
+.portfolio-grid {
+  display: flex;
+  gap: 40px; /* větší mezery mezi kartami */
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Karta */
+.portfolio-item {
+  background: #1f1f1f;         /* světlejší než pozadí */
+  border-radius: 16px;
+  overflow: hidden;
+  width: 320px;                 /* širší karta */
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-3px);
+  border-color: #666;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* Obrázek nahoře */
+.portfolio-thumb {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.25s ease;
+}
+
+.portfolio-item:hover .portfolio-thumb {
+  transform: scale(1.03);
+}
+
+/* Footer karty – text vlevo, odkaz vpravo */
+.portfolio-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;            /* větší odsazení uvnitř footeru */
+  background: #1f1f1f;           /* stejné pozadí jako karta */
+}
+
+.portfolio-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Odkaz s ikonou */
+.portfolio-link {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  transition: all 0.25s ease;
+}
+
+.portfolio-item:hover .portfolio-link {
+  color: #fff;
+  transform: translateX(3px);
+}
+
+/* Responsive */
+@media(max-width: 900px){
+  .portfolio-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .portfolio-item {
+    width: 90%;
+  }
+
+  .portfolio-thumb {
+    height: 180px;
+  }
+}
+
+
+/* ================== Sidebar a formulář ================== */
+/* Overlay pro ztmavení stránky při otevření sidebaru */
+/* ================== Sidebar a formulář ================== */
+
+/* Sidebar overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 4000;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Sidebar kontaktu */
+.contact-sidebar {
+  position: fixed;
+  top: 0;
+  right: -500px; /* úplně skrytý mimo obrazovku */
+  width: 500px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+  padding: 40px 30px;
+  box-sizing: border-box;
+  transition: right 0.3s ease;
+  z-index: 4000;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-sidebar.active {
+  right: 0; /* vysunutí */
+}
+
+/* Header sidebaru */
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.contact-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #000;
+}
+
+.close-btn {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #000;
+}
+
+/* Formulář */
+.contact-sidebar form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+@media (max-width: 768px) {
+  .contact-sidebar {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+/* Form-line s linkou */
+.form-line {
+  position: relative;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.form-line input,
+.form-line textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 1rem;
+  color: #000;
+  resize: none;
+  outline: none;
+}
+
+/* Label */
+.form-line label {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  font-size: 1rem;
+  color: #888;
+  pointer-events: none;
+  transition: 0.3s ease all;
+}
+
+.form-line input:focus + label,
+.form-line input:not(:placeholder-shown) + label,
+.form-line textarea:focus + label,
+.form-line textarea:not(:placeholder-shown) + label {
+  top: -18px;
+  font-size: 0.8rem;
+  color: #000;
+}
+
+/* Linka - vždy viditelná, ztmavne při focusu */
+.form-line .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ccc; /* světle šedá */
+  transition: background 0.3s ease;
+}
+
+.form-line input:focus ~ .underline,
+.form-line textarea:focus ~ .underline {
+  background: #000; /* ztmavne při aktivaci */
+}
+
+/* Tlačítko */
+.contact-sidebar button.btn {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-sidebar button.btn:hover {
+  background: #333;
+}
+
+
+/* ================== Footer ================== */
+.footer {
+  background: #fff;
+  color: #000;
+  font-family: 'Roboto Flex', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* obsah dole */
+  gap: 30px;
+  height: 500px; /* vyšší footer */
+  padding: 50px 40px 30px 40px;
+  box-sizing: border-box;
+}
+
+/* Horní část: text + tlačítko */
+.footer-top-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.footer-text {
+  font-size: 2.2rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.footer-text .black-text {
+  color: #000;
+}
+
+.footer-text .gray-text {
+  color: #555;
+}
+
+/* Tlačítko */
+.footer-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: rgba(128, 128, 128, 0.3);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: -1;
+  transition: right 0.4s ease;
+}
+
+.footer-btn:hover::before {
+  right: 0;
+}
+
+.footer-btn:hover {
+  color: #fff;
+}
+
+/* Čára */
+.footer-line {
+  border: none;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  margin: 0;
+}
+
+/* Spodní část footeru */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #999;
+}
+.footer-left { text-align: left; }
+.footer-right { text-align: right; }
+
+@media (max-width: 768px) {
+  .footer-top-wrapper {
+    align-items: flex-start;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .footer-left, .footer-right { text-align: center; }
+}
+
+.form-message {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-message.show {
+  opacity: 1;
+}
+
+.form-message.success {
+  color: #2e7d32;
+}
+
+.form-message.error {
+  color: #c62828;
+}
+
+
+.fade-slide {
+  opacity: 0;
+  transform: translateY(30px); /* start posunutý dolů */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

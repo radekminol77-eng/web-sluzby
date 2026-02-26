@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Frontend developer specializovaný na JavaScript, React a moderní webové aplikace. Portfolio, projekty a kontakt.">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Radek Minol | Frontend Developer</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+  (function () {
+    emailjs.init({
+      publicKey: '8pq9BkhkLgej5MhhB',
+    });
+  })();
+</script>
+
+
+</head>
+<body>
+
+<!-- Intro overlay -->
+<div class="intro-overlay" id="introOverlay">
+  <h1 class="slide-text">
+    <span>M</span><span>o</span><span>j</span><span>e</span> 
+    <span>F</span><span>i</span><span>r</span><span>m</span><span>a</span>
+  </h1>
+</div>
+
+<header class="hero" id="home">
+  <div class="dark-overlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">XNW</div>
+
+    <div class="menu-wrapper" id="menuWrapper">
+      <span class="menu-text" id="menuText">Menu</span>
+      <div class="burger" id="burger">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fullscreen overlay menu -->
+  <div class="menu-overlay" id="overlay">
+    <div class="close-icon" id="closeIcon">&times;</div>
+    <a href="#home">Domů</a>
+    <a href="#about">O nás</a>
+    <a href="#pricing">Služby</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#" id="menu-contact-link">Kontakt</a>
+  </div>
+
+  <!-- Hero content -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Moderní web pro vaše podnikání</h1>
+    <p>Jednoduše. Rychle. Profesionálně.</p>
+<div class="hero-buttons">
+  <button class="btn-services" id="btnServices">Naše služby</button>
+  <button class="btn-contact" onclick="openSidebar()">Mám zájem</button>
+</div>
+  </div>
+</section>
+</header>
+
+
+<!-- About section -->
+<section class="about fade-slide" id="about">
+  <div class="about-box ">
+    <div class="about-left">
+      <h2 class="about-title">
+        <span>O</span><span>&nbsp;</span><span>m</span><span>n</span><span>ě</span>
+      </h2>
+      <p class="typewriter" id="aboutText" data-text="Jsem Radek Minol, webový vývojář, který tvoří moderní a responzivní weby. Pomáhám firmám i jednotlivcům získat profesionální online prezentaci, která zaujme a funguje."></p>
+      <p class="typewriter" id="aboutText2" data-text="Každý projekt beru individuálně, kombinuji kreativní design s technickou precizností a dávám důraz na jednoduchost a funkčnost."></p>
+    </div>
+    <div class="about-right">
+      <img src="images/about-photo.jpg" alt="Moje foto">
+    </div>
+  </div>
+</section>
+
+<!-- Services section -->
+<section class="pricing" id="pricing">
+  <h2 class="fade-slide">Ceník služeb</h2>
+   <p class="pricing-subtitle fade-slide">Vyberte si řešení, které vám sedí.</p>
+  <div class="pricing-cards">
+
+    <div class="pricing-card fade-slide">
+      <h3>One-page web</h3>
+      <span class="price">7 000 Kč</span>
+      <ul class="package-features">
+        <li><span class="check"></span> 1 přehledná stránka</li>
+        <li><span class="check"></span> Moderní responzivní design</li>
+        <li><span class="check"></span> Návrh textů pro váš obor</li>
+        <li><span class="check"></span> Kontaktní formulář</li>
+        <li><span class="check"></span> Základní SEO nastavení</li>
+        <li><span class="check"></span> Spuštění do 5 pracovních dní</li>
+      </ul>
+      <button class="btn-contact" onclick="openSidebar()">Mám zájem</button>
+    </div>
+
+    <div class="pricing-card fade-slide">
+      <h3>Multi-page web</h3>
+      <span class="price">od 15 000 Kč</span>
+      <ul class="package-features">
+        <li><span class="check"></span> Více sekcí a podstránek</li>
+        <li><span class="check"></span> Profesionální UX a struktura</li>
+        <li><span class="check"></span> Portfolia, blog, galerie</li>
+        <li><span class="check"></span> Optimalizace rychlosti</li>
+        <li><span class="check"></span> Základní SEO a bezpečnost</li>
+        <li><span class="check"></span> Dodání do 10–15 dní</li>
+      </ul>
+      <button class="btn-contact" onclick="openSidebar()">Mám zájem</button>
+    </div>
+
+    <div class="pricing-card fade-slide">
+      <h3>Redesign / Predesign</h3>
+      <span class="price">Cena na míru</span>
+      <ul class="package-features">
+        <li><span class="check"></span> Úprava stávajícího webu</li>
+        <li><span class="check"></span> UX/UI vylepšení</li>
+        <li><span class="check"></span> Optimalizace rychlosti a SEO</li>
+        <li><span class="check"></span> Bezpečnostní audit</li>
+        <li><span class="check"></span> Moderní vizuální redesign</li>
+        <li><span class="check"></span> Individuální konzultace</li>
+      </ul>
+      <button class="btn-contact" onclick="openSidebar()">Mám zájem</button>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="portfolio fade-slide" id="portfolio">
+  <h2>Portfolio</h2>
+  <p class="portfolio-subtitle">Ukázky realizovaných projektů.</p>
+
+  <div class="portfolio-grid">
+
+    <div class="portfolio-item">
+      <div class="portfolio-thumb" style="background-image: url('images/project1.jpg');"></div>
+      <div class="portfolio-footer">
+        <span class="portfolio-title">Firemní web</span>
+        <a href="https://example.com/project1" class="portfolio-link" target="_blank">↗</a>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <div class="portfolio-thumb" style="background-image: url('images/project2.jpg');"></div>
+      <div class="portfolio-footer">
+        <span class="portfolio-title">E-shop</span>
+        <a href="https://example.com/project2" class="portfolio-link" target="_blank">↗</a>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <div class="portfolio-thumb" style="background-image: url('images/project3.jpg');"></div>
+      <div class="portfolio-footer">
+        <span class="portfolio-title">Redesign webu</span>
+        <a href="https://example.com/project3" class="portfolio-link" target="_blank">↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top-wrapper">
+    <div class="footer-text"><span class="black-text">Ozvěte se.</span><span class="gray-text"> Váš nový web <br> začíná tady.</span></div>
+    <button id="contactBtn" class="footer-btn">Kontakt</button>
+  </div>
+  <hr class="footer-line">
+  <div class="footer-bottom">
+    <span class="footer-left">© 2025 xnw</span>
+    <span class="footer-right">Všechna práva vyhrazena.</span>
+  </div>
+</footer>
+
+<!-- Sidebar overlay -->
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<!-- Sidebar kontaktu -->
+<div id="contactSidebar" class="contact-sidebar">
+  <div class="contact-header">
+    <h3>Kontakt</h3>
+    <span id="closeSidebar" class="close-btn">&times;</span>
+  </div>
+  <form id="contactForm">
+    <input type="text" name="website" style="position:absolute; left:-9999px;">
+    <div class="form-line">
+      <input type="text" id="name" name="name" required placeholder=" ">
+      <label for="name">Jméno a příjmení</label>
+      <span class="underline"></span>
+    </div>
+    <div class="form-line">
+      <input type="email" id="email" name="email" required placeholder=" ">
+      <label for="email">Email</label>
+      <span class="underline"></span>
+    </div>
+    <div class="form-line">
+      <textarea id="message" name="message" rows="3" required placeholder=" "></textarea>
+      <label for="message">Zpráva</label>
+      <span class="underline"></span>
+    </div>
+    <button type="submit" class="btn">Odeslat</button>
+
+    <div id="formMessage" class="form-message"></div>
+
+  </form>
+</div>
+ 
+
+<script src="script.js"></script>
+</body>
+</html>
