@@ -10,7 +10,7 @@ Cílem je ukázat mé schopnosti v tvorbě moderních, responzivních webů a na
 - GitHub Pages
 
 ## Live demo
-[Live web](https://username.github.io/web-sluzby/)
+[Live web](https://radekminol77-eng.github.io/web-sluzby/)
 
 ## Screenshot
 
