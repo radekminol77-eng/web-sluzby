@@ -1,7 +1,7 @@
 # Portfolio Web – Moje služby
 
-Tento web slouží k prezentaci mých služeb a projektů.  
-Cílem je ukázat mé schopnosti v tvorbě moderních, responzivních webů a nabídky služeb pro potenciální klienty či zaměstnavatele.
+Tento web slouží jako **ukázka mé práce** při tvorbě moderních a responzivních webů.  
+Cílem je prezentovat mé schopnosti a styl v tvorbě webových stránek pro potenciální klienty.
 
 ## Technologie
 - HTML5
