@@ -14,8 +14,4 @@ Cílem je ukázat mé schopnosti v tvorbě moderních, responzivních webů a na
 
 ## Screenshot
 
-![Screenshot homepage](images/homepage.png)
-
-## Návod k použití
-- Stačí otevřít soubor `index.html` v prohlížeči  
-- Nebo použít GitHub Pages pro automatické zobrazení online
+![Screenshot homepage](web-sluzby.png)
