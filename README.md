@@ -7,7 +7,6 @@ Cílem je ukázat mé schopnosti v tvorbě moderních, responzivních webů a na
 - HTML5
 - CSS
 - JavaScript
-- GitHub Pages
 
 ## Live demo
 [Live web](https://radekminol77-eng.github.io/web-sluzby/)
